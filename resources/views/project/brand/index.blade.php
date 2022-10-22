@@ -1,4 +1,6 @@
+{{-- extends main layout form layout/app --}}
 <x-app-layout>
+    {{-- use custom slots for intigrate CSS --}}
     <x-slot name="innerCss">
         <link rel="stylesheet" href="{{ asset('vendor/datatables/css/jquery.dataTables.min.css') }}">
     </x-slot>
@@ -8,6 +10,7 @@
 
             <div class="card">
                 <div class="container-fluid">
+                    {{-- In this component we display card top bar with title and add button --}}
                     <x-include.title-bar :page-title="$pageTitle ?? null"
                                          ajax-form="ajaxForm('{{ route('brand.create') }}','Add Brand')"/>
                     <div class="card-body">
@@ -35,7 +38,7 @@
     </div>
 
 
-    <!-- Modal -->
+    <!-- Modal for add/edit -->
     <div class="modal fade" id="ajaxModal">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -44,14 +47,19 @@
                     <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
                     </button>
                 </div>
+                {{--fetch body from ajax success return--}}
                 <div id="bodyAjax"></div>
             </div>
         </div>
     </div>
 
+    {{-- use custom slots for intigrate JS --}}
     <x-slot name="innerScript">
         <script src="{{ asset('vendor/datatables/js/jquery.dataTables.min.js') }}"></script>
         <script>
+            /*
+            * fetch and display data in table using ajax and datatables JS library
+            * */
             $(document).ready(function () {
                 $('#dataTable').DataTable({
                     searching: false,
@@ -68,6 +76,9 @@
                         {data: 'model_items_count'},
                         {data: 'item_count'},
                         {
+                            /*
+                            * display edit or delete buttons
+                            * */
                             render: function (data, type, row) {
                                 return `
                                     <div class="btn-group">

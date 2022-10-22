@@ -13,6 +13,7 @@
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('vendor/toastr/css/toastr.min.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.6.0/sweetalert2.min.css" integrity="sha512-y6TjkITSFkRB9mZmDaJyDOsyHsYvOo3Np3iAKe02HgMDP4L4vbmbhlzNpbbIVC1x+GUUHvepTd1BKDe4kC6kNg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    {{-- make slot to link custom style and css --}}
     {{ $innerCss ?? '' }}
 </head>
 
@@ -79,7 +80,7 @@
     <div class="content-body">
         <!-- row -->
         <div class="container">
-            <x-alert-massage/>
+            {{-- body contet using laravel slots --}}
             {{ $slot }}
 
         </div>
@@ -108,15 +109,16 @@
 <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
 <script src="{{ asset('vendor/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
 <script src="{{ asset('vendor/jquery-slimscroll/jquery.slimscroll.min.js') }}"></script>
-<!-- Here is navigation script -->
 <script src="{{ asset('vendor/quixnav/quixnav.min.js') }}"></script>
 <script src="{{ asset('js/quixnav-init.js') }}"></script>
 <script src="{{ asset('js/custom.min.js') }}"></script>
-<!-- daterangepicker init -->
 <script src="{{ asset('js/dashboard/dashboard-1.js') }}"></script>
-<script src="{{ asset('js/custom-ajax.js') }}"></script>
 <script src="{{ asset('vendor/toastr/js/toastr.min.js') }}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.6.0/sweetalert2.min.js" integrity="sha512-STirfWdXti4sBdx8qNLvlPU6G008ynF4TcZkLd0hOsM6PkZM3PbWbAoe4tO0nAu92S/HfE/XK1N4SwDzai9xDg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+{{-- this custom file is use to wirte custom JS and AJAX --}}
+<script src="{{ asset('js/custom-ajax.js') }}"></script>
+{{-- make slot to link custom src and script links --}}
 {{ $innerScript ?? '' }}
 </body>
 </html>

@@ -1,3 +1,4 @@
+{{-- use collective HTML for input fields and this file is same for edit and create that is why i use include in the blade --}}
 <div class="row">
     <div class="col-md-12">
         {!! Form::label('name', 'Brand Name') !!}
