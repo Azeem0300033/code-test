@@ -103,7 +103,7 @@ class ModelItemController extends Controller
     public function fetchAjax(Request $request)
     {
         $count = ModelItem::count();
-        $brand = ModelItem::with('brand')->orderBy('id', 'desc')
+        $brand = ModelItem::with('brand')->withCount('item')->orderBy('id', 'desc')
             ->skip($request->start)
             ->take($request->length)
             ->get();

@@ -105,11 +105,10 @@ class BrandController extends Controller
     public function fetchAjax(Request $request)
     {
         $count = Brand::count();
-        $brand = Brand::orderBy('id', 'desc')
+        $brand = Brand::withCount('modelItems','item')->orderBy('id', 'desc')
             ->skip($request->start)
             ->take($request->length)
             ->get();
-
         return response()->json([
             'aaData' => $brand,
             'draw' => intval($request->draw),

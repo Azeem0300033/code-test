@@ -18,7 +18,7 @@
                                         <th scope="col">ID</th>
                                         <th scope="col">Name</th>
                                         <th scope="col">Brand Name</th>
-{{--                                        <th scope="col">Total Model</th>--}}
+                                        <th scope="col">Total Items</th>
                                         <th scope="col">Action</th>
                                     </tr>
                                     </thead>
@@ -65,6 +65,7 @@
                         {data: 'id'},
                         {data: 'name'},
                         {data: 'brand.name'},
+                        {data: 'item_count'},
                         { render: function (data, type, row) {
                                 return `
                                     <div class="btn-group">

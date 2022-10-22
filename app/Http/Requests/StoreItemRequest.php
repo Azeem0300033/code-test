@@ -27,7 +27,6 @@ class StoreItemRequest extends FormRequest
         return [
             'name' => 'required|string|max:255',
             'brand_id' => 'required|integer',
-            'model_item_id' => 'integer',
             'amount' => 'required|integer',
         ];
     }

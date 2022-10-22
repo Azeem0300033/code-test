@@ -12,4 +12,13 @@ class Brand extends Model
     protected $fillable = [
         'name',
     ];
+
+    public function modelItems()
+    {
+        return $this->hasMany(ModelItem::class);
+    }
+
+    public function item(){
+        return $this->hasManyThrough(Item::class, ModelItem::class);
+    }
 }

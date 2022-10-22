@@ -17,4 +17,9 @@ class ModelItem extends Model
     {
         return $this->belongsTo(Brand::class);
     }
+
+    public function item()
+    {
+        return $this->hasMany(Item::class);
+    }
 }

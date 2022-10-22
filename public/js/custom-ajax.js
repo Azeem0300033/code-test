@@ -108,10 +108,10 @@ function getModelItem(elem) {
         }, success: function (data) {
             $("#model_item_id option").remove();
             data.forEach(function(item) {
-                $('#model_item_id').append($('<option>', {
-                    value: item.id,
-                    text : item.name
-                }));
+                $('#model_item_id').append(`
+                    <option value="">Select Model</option>
+                    <option value="${item.id}">${item.name}</option>
+                `);
             });
         }
     });

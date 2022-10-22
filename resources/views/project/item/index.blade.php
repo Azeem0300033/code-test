@@ -52,6 +52,7 @@
         <script src="{{ asset('vendor/datatables/js/jquery.dataTables.min.js') }}"></script>
         <script>
             $(document).ready(function () {
+                $.fn.dataTable.ext.errMode = 'none';
                 $('#dataTable').DataTable({
                     searching: false,
                     'processing': true,
@@ -64,7 +65,7 @@
                     columns: [
                         {data: 'id'},
                         {data: 'name'},
-                        {data: 'brand.name' ?? null},
+                        {data: 'brand.name'},
                         {data: 'model_item.name'},
                         { render: function (data, type, row) {
                                 return `

@@ -8,7 +8,8 @@
 
             <div class="card">
                 <div class="container-fluid">
-                    <x-include.title-bar :page-title="$pageTitle ?? null" ajax-form="ajaxForm('{{ route('brand.create') }}','Add Brand')"/>
+                    <x-include.title-bar :page-title="$pageTitle ?? null"
+                                         ajax-form="ajaxForm('{{ route('brand.create') }}','Add Brand')"/>
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-12">
@@ -17,8 +18,8 @@
                                     <tr>
                                         <th scope="col">ID</th>
                                         <th scope="col">Name</th>
-{{--                                        <th scope="col">Total Item</th>--}}
-{{--                                        <th scope="col">Total Model</th>--}}
+                                        <th scope="col">Total Model</th>
+                                        <th scope="col">Total Item</th>
                                         <th scope="col">Action</th>
                                     </tr>
                                     </thead>
@@ -64,15 +65,18 @@
                     columns: [
                         {data: 'id'},
                         {data: 'name'},
-                        { render: function (data, type, row) {
+                        {data: 'model_items_count'},
+                        {data: 'item_count'},
+                        {
+                            render: function (data, type, row) {
                                 return `
                                     <div class="btn-group">
                                         <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             Action
                                         </button>
                                         <div class="dropdown-menu">
-                                            <a class="dropdown-item" href="javascript:void(0)" onclick="ajaxForm('brand/`+row.id+`/edit','Edit Brand')">Edit</a>
-                                            <a class="dropdown-item" href="javascript:void(0)" onclick="globelDeleteFunction('brand/`+row.id+`')">Delete</a>
+                                            <a class="dropdown-item" href="javascript:void(0)" onclick="ajaxForm('brand/` + row.id + `/edit','Edit Brand')">Edit</a>
+                                            <a class="dropdown-item" href="javascript:void(0)" onclick="globelDeleteFunction('brand/` + row.id + `')">Delete</a>
                                         </div>
                                     </div>
                                 `;
