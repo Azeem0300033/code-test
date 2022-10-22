@@ -17,23 +17,21 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return redirect()->route('dashboard');
+    return redirect()->route('item.index');
 });
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+})->name('dashboard');
 
-Route::middleware(['web'])->group(function () {
-    Route::resource('brand', BrandController::class);
-    Route::resource('model-item', ModelItemController::class);
-    Route::resource('item', ItemController::class);
+Route::resource('brand', BrandController::class);
+Route::resource('model-item', ModelItemController::class);
+Route::resource('item', ItemController::class);
 
-    Route::get('brand-fetch-ajax', [BrandController::class, 'fetchAjax'])->name('brand.fetch');
-    Route::get('model-fetch-ajax', [ModelItemController::class, 'fetchAjax'])->name('model.fetch');
-    Route::get('item-fetch-ajax', [ItemController::class, 'fetchAjax'])->name('item.fetch');
-    Route::get('select-brand-ajax', [BrandController::class, 'brandAjaxForModel']);
-    Route::get('select-model-ajax', [ModelItemController::class, 'modelAjaxForItem']);
-});
+Route::get('brand-fetch-ajax', [BrandController::class, 'fetchAjax'])->name('brand.fetch');
+Route::get('model-fetch-ajax', [ModelItemController::class, 'fetchAjax'])->name('model.fetch');
+Route::get('item-fetch-ajax', [ItemController::class, 'fetchAjax'])->name('item.fetch');
+Route::get('select-brand-ajax', [BrandController::class, 'brandAjaxForModel']);
+Route::get('select-model-ajax', [ModelItemController::class, 'modelAjaxForItem']);
 
 require __DIR__.'/auth.php';

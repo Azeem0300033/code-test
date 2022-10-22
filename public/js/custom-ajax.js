@@ -1,3 +1,8 @@
+/*
+* this ajax form use to show modal with form
+* in the requestRote use to pass route name by function parameter
+* bodyAjax use to render html in the modal body
+* */
 function ajaxForm(requestRoute,title){
     $.ajax({
         url: requestRoute,
@@ -16,6 +21,13 @@ function ajaxForm(requestRoute,title){
     });
 }
 
+/*
+*  this function use to store and update form
+* ajaxSetup use to pass csrf token
+* requestRoute use to pass route name by function parameter
+* formId use to pass form id by function parameter
+* I use serialize function to get all form data and pass to the controller
+* */
 function storeAjax(requestRoute,formId){
     $.ajaxSetup({
         headers: {
@@ -40,6 +52,10 @@ function storeAjax(requestRoute,formId){
     });
 }
 
+/*
+*  this function use to show success massage
+* */
+
 function toster(){
     toastr.success("Your action complete successfully.", "Success", {
         timeOut: 5000,
@@ -59,9 +75,18 @@ function toster(){
     });
 }
 
+/*
+*  this function use to reload datatable with out page reload
+* */
+
 function tableReloder(){
     $('#dataTable').DataTable().ajax.reload();
 }
+
+/*
+*  this function use to show confirm message before delete
+* if user confirm then delete the data and reload the datatable
+* */
 
 function globelDeleteFunction(routeName)
 {
@@ -98,6 +123,10 @@ function globelDeleteFunction(routeName)
         }
     })
 }
+
+/*
+*  this function use to get models by brand id and fetch in the select option
+* */
 
 function getModelItem(elem) {
     $.ajax({
