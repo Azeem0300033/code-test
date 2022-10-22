@@ -1,7 +1,7 @@
 <?php
 
 namespace Database\Factories;
-
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +17,8 @@ class ModelItemFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name' => $this->faker->name,
+            'brand_id' => rand(1, 5),
         ];
     }
 }

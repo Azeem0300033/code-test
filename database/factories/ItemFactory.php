@@ -17,7 +17,10 @@ class ItemFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name' => $this->faker->name,
+            'model_item_id' => rand(1, 10),
+            'brand_id' => rand(1, 5),
+            'amount' => rand(100, 1000),
         ];
     }
 }
